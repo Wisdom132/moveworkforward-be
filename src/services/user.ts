@@ -11,6 +11,5 @@ export const getUsers = async (): Promise<any>=> {
 
 
 export const findByEmail = async (email:string): Promise<any> => {
-      return User.find({email:email});
-
+      return User.findOne({email:email});
 }
