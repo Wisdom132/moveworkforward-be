@@ -8,6 +8,7 @@ export const registerUser: RequestHandler = async (req, res) => {
       const user = await createUserControler(req.body);
       return res.status(200).json({ success: true, data: user, message:"Success" });
   } catch (error) {
+    console.log(error)
     return res.json({
       success: false,
       error: "Internal server error",
