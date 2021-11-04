@@ -1,19 +1,20 @@
 import * as dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-// import * as cors from "cors";
 import * as userRoutes from "./handlers/user";
+import cors from 'cors'
+dotenv.config();
 
 // Create Express server
 const app: express.Express = express();
 
-dotenv.config();
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   next();
+// });
 
+app.use(cors());
 mongoose
   .connect(`${process.env.DB_URL}`, { useNewUrlParser: true })
   .then(() => {

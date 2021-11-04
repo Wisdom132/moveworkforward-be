@@ -17,7 +17,7 @@ export const createUserControler = async (payload: any): Promise<IHelperResponse
     return {
       success: false,
       status: 400,
-      error: "Account successfully created",
+      error: "Account Already in use",
     };
   }
     const user = await createUser(payload);

@@ -5,10 +5,10 @@ import { createUserControler, getUserController } from "../controller/user";
 
 export const registerUser: RequestHandler = async (req, res) => {
   try {
-      const {error, status,data,message} = await createUserControler(req.body);
+      const {error,success, status,data,message} = await createUserControler(req.body);
       return res
         .status(status)
-        .json({ success: true, data: data, error, message });
+        .json({ success, data: data, error, message });
   } catch (error) {
     console.log(error)
     return res.json({
