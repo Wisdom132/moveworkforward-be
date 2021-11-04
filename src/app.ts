@@ -37,7 +37,7 @@ mongoose
 app.set("port", process.env.PORT || 4000);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors(options));
+// app.use(cors(options));
 
 // app.get("/", homeRoute.index);
 app.post("/register", userRoutes.registerUser);
