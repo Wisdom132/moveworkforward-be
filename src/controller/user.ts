@@ -10,7 +10,16 @@ interface IHelperResponse {
 }
 
 
-export const createUserControler = async (payload:any): Promise<IHelperResponse> => {    
+export const createUserControler = async (payload: any): Promise<IHelperResponse> => {
+  
+  let exist = await findByEmail(payload.email)
+  if (exist) {
+    return {
+      success: false,
+      status: 400,
+      error: "Account successfully created",
+    };
+  }
     const user = await createUser(payload);
     return {
       success: true,
