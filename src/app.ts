@@ -1,26 +1,18 @@
 import * as dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-import * as cors from "cors";
+// import * as cors from "cors";
 import * as userRoutes from "./handlers/user";
 
 // Create Express server
 const app: express.Express = express();
 
 dotenv.config();
-const options: cors.CorsOptions = {
-  allowedHeaders: [
-    "Origin",
-    "X-Requested-With",
-    "Content-Type",
-    "Accept",
-    "X-Access-Token",
-  ],
-  credentials: true,
-  methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-  origin: "*",
-  preflightContinue: false,
-};
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 mongoose
   .connect(`${process.env.DB_URL}`, { useNewUrlParser: true })
